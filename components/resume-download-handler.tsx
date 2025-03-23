@@ -10,7 +10,7 @@ export default function ResumeDownloadHandler() {
       const isDownloadSupported = "download" in document.createElement("a")
 
       // Get all resume download buttons
-      const resumeButtons = document.querySelectorAll('a[href$="Tushar-Agarwal-Resume.pdf"]')
+      const resumeButtons = document.querySelectorAll('a[href$="Agarwal-Resume.pdf"]')
 
       resumeButtons.forEach((button) => {
         button.addEventListener("click", (e) => {

@@ -66,9 +66,9 @@ export default function About() {
                 // Create an anchor element
                 const link = document.createElement("a")
                 // Set the file path
-                link.href = "/Tushar-Agarwal-Resume.pdf"
+                link.href = "/Tushar_Agarwal_Resume.pdf"
                 // Set the download attribute with filename
-                link.setAttribute("download", "Tushar-Agarwal-Resume.pdf")
+                link.setAttribute("download", "Tushar_Agarwal_Resume.pdf")
                 // Append to body
                 document.body.appendChild(link)
                 // Trigger click
