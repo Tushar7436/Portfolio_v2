@@ -1,5 +1,3 @@
-Thought for 2 seconds### Full-Stack Developer Portfolio
-
 A modern, responsive portfolio website built with Next.js and Tailwind CSS to showcase my projects, skills, and experience as a full-stack developer.
 
 ## Description
