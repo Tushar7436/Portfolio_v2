@@ -16,11 +16,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <section className="py-16 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6 max-w-3xl">
-        <div className="mb-6 text-sm text-muted-foreground">
+        <button className="mb-6 text-sm text-muted-foreground">
           <Link href="/" className="hover:underline">
             ← Back to Home
           </Link>
-        </div>
+        </button>
 
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">{post.title}</h1>
         <div className="text-sm text-muted-foreground mb-8">
