@@ -7,50 +7,19 @@ import SectionHeading from "@/components/ui-elements/section-heading"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Calendar, ExternalLink } from "lucide-react"
+import { postsBySlug } from "@/lib/blog-data"
 
-// Blog post data
-const blogPosts = [
-  {
-    id: 1,
-    title: "Building Performant Next.js Applications",
-    excerpt: "Learn how to optimize your Next.js applications for maximum performance and better user experience.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "June 15, 2023",
-    readTime: "8 min read",
-    category: "Performance",
-    slug: "building-performant-nextjs-applications",
-  },
-  {
-    id: 2,
-    title: "The Power of Server Components in Next.js",
-    excerpt: "Explore how Server Components can revolutionize the way you build React applications with Next.js.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "May 22, 2023",
-    readTime: "6 min read",
-    category: "Next.js",
-    slug: "power-of-server-components-nextjs",
-  },
-  {
-    id: 3,
-    title: "Creating Smooth Animations with Framer Motion",
-    excerpt: "A comprehensive guide to implementing beautiful, performant animations in your React applications.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "April 10, 2023",
-    readTime: "10 min read",
-    category: "Animation",
-    slug: "smooth-animations-framer-motion",
-  },
-  {
-    id: 4,
-    title: "Mastering TypeScript for React Development",
-    excerpt: "Discover how TypeScript can improve your React development workflow and help catch errors early.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "March 5, 2023",
-    readTime: "7 min read",
-    category: "TypeScript",
-    slug: "mastering-typescript-react-development",
-  },
-]
+// Convert the postsBySlug object to an array for the listing
+const blogPosts = Object.entries(postsBySlug).map(([slug, post], index) => ({
+  id: index + 1,
+  title: post.title,
+  description: post.description,
+  image: "/blogpost.jpg?height=400&width=600",
+  date: post.date,
+  readTime: post.readTime,
+  category: post.category,
+  slug,
+}))
 
 export default function Blog() {
   return (
@@ -67,9 +36,6 @@ export default function Blog() {
         {/* Background grid pattern */}
         <motion.div
           className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:40px_40px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 2, delay: 0.5 }}
         />
       </div>
 
@@ -125,7 +91,7 @@ export default function Blog() {
                   <div className="bg-background rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
                     <div className="relative aspect-video overflow-hidden">
                       <Image
-                        src={post.image || "/placeholder.svg"}
+                        src={post.image || "/blogpost.jpg?"}
                         alt={post.title}
                         width={600}
                         height={400}
@@ -145,7 +111,7 @@ export default function Blog() {
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-4 line-clamp-2">{post.description}</p>
 
                       <Button variant="ghost" size="sm" className="group text-xs sm:text-sm" asChild>
                         <Link href={`/blog/${post.slug}`}>
@@ -168,10 +134,10 @@ export default function Blog() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Button size="lg" variant="outline" className="text-sm sm:text-base" asChild>
-              <Link href="https://blogwebsite-840l.onrender.com/" target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                View All Articles
+            <Button size="lg" variant="outline" className="text-sm sm:text-base z-10" asChild>
+              <Link href="https://blogwebsite-znrz.onrender.com/" target="_blank" rel="noopener noreferrer">
+                my blogs?
+                <ExternalLink className="h-4 w-4" />
               </Link>
             </Button>
           </motion.div>

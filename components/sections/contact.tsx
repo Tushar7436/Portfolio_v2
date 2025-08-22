@@ -19,6 +19,7 @@ export default function Contact() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsSubmitting(true)
+    const form = event.currentTarget
 
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500))
@@ -29,7 +30,7 @@ export default function Contact() {
     })
 
     setIsSubmitting(false)
-    event.currentTarget.reset()
+    form.reset()
   }
 
   return (
@@ -57,7 +58,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p className="text-muted-foreground">hello@example.com</p>
+                  <p className="text-muted-foreground">tushar7436@gmail.com</p>
                 </div>
               </div>
 
@@ -67,7 +68,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                  <p className="text-muted-foreground">+91 8871074581</p>
                 </div>
               </div>
 
@@ -77,7 +78,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium">Location</h4>
-                  <p className="text-muted-foreground">San Francisco, CA</p>
+                  <p className="text-muted-foreground">Bhopal India</p>
                 </div>
               </div>
             </div>
@@ -122,7 +123,7 @@ export default function Contact() {
                   <label htmlFor="email" className="text-sm font-medium">
                     Email
                   </label>
-                  <Input id="email" name="email" type="email" placeholder="Your email" required />
+                  <Input id="email" name="email" type="email" placeholder="Please enter your email" required />
                 </div>
               </div>
 
@@ -130,14 +131,14 @@ export default function Contact() {
                 <label htmlFor="subject" className="text-sm font-medium">
                   Subject
                 </label>
-                <Input id="subject" name="subject" placeholder="What's this about?" required />
+                <Input id="subject" name="subject" placeholder="Just saying hi! {can leave empty}"/>
               </div>
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium">
                   Message
                 </label>
-                <Textarea id="message" name="message" placeholder="Your message" rows={6} required />
+                <Textarea id="message" name="message" placeholder="Type your message here..." rows={6} required />
               </div>
 
               <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
