@@ -15,9 +15,6 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Portfolio | Full-Stack Developer",
-  description: "Full-stack developer portfolio showcasing projects, skills, and expertise in web development.",
-  keywords: "full-stack developer, web development, portfolio, projects, react, next.js",
-    generator: 'v0.dev'
 }
 
 export const viewport = {

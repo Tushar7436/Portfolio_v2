@@ -22,7 +22,7 @@ export default function About() {
           >
             <div className="relative aspect-square overflow-hidden rounded-2xl">
               <Image
-                src="/placeholder.svg?height=600&width=600"
+                src="/download.svg?height=600&width=600"
                 alt="Developer portrait"
                 width={600}
                 height={600}

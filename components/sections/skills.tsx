@@ -6,44 +6,34 @@ import SectionHeading from "@/components/ui-elements/section-heading"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // Skill data
-const technicalSkills = [
-  { name: "JavaScript/TypeScript", level: 95 },
-  { name: "React & Next.js", level: 90 },
-  { name: "Node.js & Express", level: 85 },
-  { name: "HTML & CSS", level: 90 },
-  { name: "Tailwind CSS", level: 95 },
-  { name: "SQL & NoSQL Databases", level: 80 },
-  { name: "RESTful APIs", level: 90 },
-  { name: "GraphQL", level: 75 },
-  { name: "AWS & Vercel", level: 80 },
-  { name: "Git & GitHub", level: 90 },
-]
-
-const softSkills = [
-  { name: "Problem Solving", level: 95 },
-  { name: "Communication", level: 90 },
-  { name: "Teamwork", level: 95 },
-  { name: "Time Management", level: 85 },
-  { name: "Adaptability", level: 90 },
-  { name: "Attention to Detail", level: 95 },
-  { name: "Project Management", level: 80 },
-  { name: "Critical Thinking", level: 90 },
-  { name: "Creativity", level: 85 },
-  { name: "Leadership", level: 80 },
-]
-
-const tools = [
-  { name: "VS Code", level: 95 },
-  { name: "Docker", level: 80 },
-  { name: "Figma", level: 85 },
-  { name: "Postman", level: 90 },
-  { name: "GitHub Actions", level: 80 },
-  { name: "Jest & Testing Library", level: 85 },
-  { name: "Webpack", level: 75 },
-  { name: "Chrome DevTools", level: 90 },
-  { name: "npm/yarn", level: 95 },
-  { name: "Slack & Notion", level: 90 },
-]
+const skillCategories = {
+  technical: [
+    { name: "JavaScript", level: 61 },
+    { name: "React.js", level: 72 },
+    { name: "Node.js & Express", level: 62 },
+    { name: "HTML & CSS", level: 78 },
+    { name: "Problem solving", level: 78 },
+    { name: "SQL", level: 70 },
+    { name: "Next.js", level: 70 },
+    { name: "NoSQL", level: 70 }
+  ],
+  soft: [
+    { name: "Problem Solving", level: 85 },
+    { name: "Communication", level: 80 },
+    { name: "Teamwork", level: 85 },
+    { name: "Time Management", level: 85 },
+    { name: "Adaptability", level: 90 },
+    { name: "Attention to Detail", level: 85 },
+  ],
+  tools: [
+    { name: "AWS & Vercel", level: 76 },
+    { name: "Git & GitHub", level: 76 },
+    { name: "Docker", level: 62 },
+    { name: "Figma", level: 53 },
+    { name: "Postman", level: 73 },
+    { name: "Chrome DevTools", level: 73 }
+  ]
+}
 
 // Custom animated progress component
 const AnimatedProgress = ({ value, className }: { value: number; className?: string }) => {
@@ -82,169 +72,75 @@ const AnimatedProgress = ({ value, className }: { value: number; className?: str
   )
 }
 
+// Skill item component
+const SkillItem = ({ skill, index }: { skill: { name: string; level: number }; index: number }) => {
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setProgress(skill.level), 300 + index * 100)
+    return () => clearTimeout(timer)
+  }, [skill.level, index])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="space-y-3"
+    >
+      <div className="flex justify-between items-center">
+        <span className="font-medium text-sm sm:text-base">{skill.name}</span>
+        <motion.span
+          className="text-muted-foreground text-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+        >
+          {Math.round(progress)}%
+        </motion.span>
+      </div>
+      <AnimatedProgress value={progress} className="h-2" />
+    </motion.div>
+  )
+}
+
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 md:py-32 bg-background">
-      <div className="container px-4 md:px-6">
-        <SectionHeading
-          title="Skills & Expertise"
-          subtitle="A comprehensive overview of my technical and soft skills"
-          align="center"
-        />
+    <section id="skills" className="py-16 md:py-24 bg-background">
+      <div className="container px-4 md:px-6 mx-auto">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <SectionHeading
+            title="Skills and Knowledge"
+            subtitle="A overview of my technical and soft skills"
+            align="center"
+          />
 
-        <Tabs defaultValue="technical" className="max-w-4xl mx-auto">
-          <TabsList className="w-full mb-8 sm:mb-12 flex flex-wrap sm:grid sm:grid-cols-3 gap-2 sm:gap-0">
-            <TabsTrigger value="technical" className="flex-1 text-xs sm:text-sm whitespace-normal h-auto py-2">
-              Technical Skills
-            </TabsTrigger>
-            <TabsTrigger value="soft" className="flex-1 text-xs sm:text-sm whitespace-normal h-auto py-2">
-              Soft Skills
-            </TabsTrigger>
-            <TabsTrigger value="tools" className="flex-1 text-xs sm:text-sm whitespace-normal h-auto py-2">
-              Tools & Technologies
-            </TabsTrigger>
-          </TabsList>
+          <Tabs defaultValue="technical" className="w-full">
+            <TabsList className="w-full mb-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <TabsTrigger value="technical" className="text-sm ">
+                Technical Skills
+              </TabsTrigger>
+              <TabsTrigger value="soft" className="text-sm ">
+                Soft Skills
+              </TabsTrigger>
+              <TabsTrigger value="tools" className="text-sm ">
+                Tools & Technologies
+              </TabsTrigger>
+            </TabsList>
 
-          <TabsContent value="technical" className="space-y-8">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-              {technicalSkills.map((skill, index) => {
-                const SkillProgress = () => {
-                  const [progress, setProgress] = useState(0)
-
-                  useEffect(() => {
-                    const timer = setTimeout(
-                      () => {
-                        setProgress(skill.level)
-                      },
-                      300 + index * 100,
-                    )
-
-                    return () => clearTimeout(timer)
-                  }, [])
-
-                  return (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium">{skill.name}</span>
-                        <motion.span
-                          className="text-muted-foreground"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                        >
-                          {Math.round(progress)}%
-                        </motion.span>
-                      </div>
-                      <AnimatedProgress value={progress} className="h-2" />
-                    </motion.div>
-                  )
-                }
-
-                return <SkillProgress key={skill.name} />
-              })}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="soft" className="space-y-8">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-              {softSkills.map((skill, index) => {
-                const SkillProgress = () => {
-                  const [progress, setProgress] = useState(0)
-
-                  useEffect(() => {
-                    const timer = setTimeout(
-                      () => {
-                        setProgress(skill.level)
-                      },
-                      300 + index * 100,
-                    )
-
-                    return () => clearTimeout(timer)
-                  }, [])
-
-                  return (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium">{skill.name}</span>
-                        <motion.span
-                          className="text-muted-foreground"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                        >
-                          {Math.round(progress)}%
-                        </motion.span>
-                      </div>
-                      <AnimatedProgress value={progress} className="h-2" />
-                    </motion.div>
-                  )
-                }
-
-                return <SkillProgress key={skill.name} />
-              })}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="tools" className="space-y-8">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-              {tools.map((skill, index) => {
-                const SkillProgress = () => {
-                  const [progress, setProgress] = useState(0)
-
-                  useEffect(() => {
-                    const timer = setTimeout(
-                      () => {
-                        setProgress(skill.level)
-                      },
-                      300 + index * 100,
-                    )
-
-                    return () => clearTimeout(timer)
-                  }, [])
-
-                  return (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="flex justify-between mb-2">
-                        <span className="font-medium">{skill.name}</span>
-                        <motion.span
-                          className="text-muted-foreground"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                        >
-                          {Math.round(progress)}%
-                        </motion.span>
-                      </div>
-                      <AnimatedProgress value={progress} className="h-2" />
-                    </motion.div>
-                  )
-                }
-
-                return <SkillProgress key={skill.name} />
-              })}
-            </div>
-          </TabsContent>
-        </Tabs>
+            {Object.entries(skillCategories).map(([category, skills]) => (
+              <TabsContent key={category} value={category} className="mt-0">
+                <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+                  {skills.map((skill, index) => (
+                    <SkillItem key={skill.name} skill={skill} index={index} />
+                  ))}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
       </div>
     </section>
   )
 }
-
