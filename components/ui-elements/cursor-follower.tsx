@@ -27,6 +27,7 @@ export default function CursorFollower() {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
       opacity: 0.5,
+      backgroundColor: "rgb(128, 128, 128)",
     },
     text: {
       height: 150,

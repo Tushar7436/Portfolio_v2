@@ -20,7 +20,7 @@ export default function About() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-black dark:bg-transparent">
               <Image
                 src="/download.svg?height=600&width=600"
                 alt="Developer portrait"

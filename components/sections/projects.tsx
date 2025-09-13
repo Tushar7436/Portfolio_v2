@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -67,8 +67,27 @@ export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.featured)
   
-  const cardsPerView = 3
+  const getCardsPerView = () => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 640) return 1 // mobile
+      if (window.innerWidth < 1024) return 2 // tablet
+      return 3 // desktop
+    }
+    return 3 // default for SSR
+  }
+  
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView())
   const maxIndex = Math.max(0, filteredProjects.length - cardsPerView)
+
+  // Handle resize
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerView(getCardsPerView())
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1))
@@ -92,7 +111,7 @@ export default function Projects() {
       <div className="container px-4 md:px-6">
         <SectionHeading
           title="Featured Projects"
-          subtitle="A showcase of my recent work and technical expertise"
+          subtitle="A showcase of my recent work and technical experience"
           align="center"
         />
 
@@ -119,11 +138,14 @@ export default function Projects() {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden px-4 sm:px-0">
           <AnimatePresence mode="sync">
             <motion.div 
-              className="flex transition-transform duration-500 ease-in-out gap-6"
-              style={{ transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)` }}
+              className="flex transition-transform duration-500 ease-in-out gap-4 sm:gap-6"
+              style={{ 
+                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                width: `${(100 * filteredProjects.length) / cardsPerView}%`
+              }}
             >
               {filteredProjects.map((project) => {
                 const IconComponent = project.icon
@@ -135,9 +157,9 @@ export default function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                     transition={{ duration: 0.5 }}
-                    className="flex-shrink-0 w-1/3 min-w-0"
+                    className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 min-w-0"
                   >
-                                      <div className="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[32rem]">
+                                      <div className="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-[20rem] sm:h-[28rem] lg:h-[32rem]">
                     {/* Simple Gradient Background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
                     
