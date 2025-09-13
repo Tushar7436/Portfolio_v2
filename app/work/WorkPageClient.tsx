@@ -10,68 +10,72 @@ import { ArrowLeft, ExternalLink, Github } from "lucide-react"
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Lumen Airways",
     description:
-      "A full-featured e-commerce platform with product management, cart functionality, payment processing, and order tracking.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "Stripe"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "Front-end for Lumen Airways — polished airline booking & flight search experience.",
+    image: "/lumen-airways.png",   // you might want to screenshot or add
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    liveUrl: "#",   // fill in if deployed
+    githubUrl: "https://github.com/Tushar7436/Lumen-Airways",
     featured: true,
     longDescription:
-      "This e-commerce platform provides businesses with a complete solution for selling products online. It features a responsive design, secure payment processing with Stripe, comprehensive product management, user authentication, order tracking, and an intuitive admin dashboard. Built with performance and scalability in mind, it leverages Next.js for server-side rendering and optimized loading times.",
+      "Lumen Airways is a front-end project for airline booking. It includes flight search, booking pages, responsive design, likely animation and interactive UI components. Built with modern frontend stack, this showcases UI/UX skills and layout responsiveness.",
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Flight Service",
     description:
-      "A collaborative task management application with real-time updates, team workspaces, and progress tracking.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
+      "Backend part of the whole airline booking service, handling flight logic & APIs.",
+    image: "/flight-service.png",
+    tags: ["Node.js", "Express", "REST API", "JavaScript"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Tushar7436/Flight-Service",
     featured: true,
     longDescription:
-      "This task management application helps teams collaborate efficiently with real-time updates using Socket.io. It features customizable workspaces, task assignment, due date tracking, priority levels, file attachments, and detailed progress analytics. The app includes email notifications, recurring tasks, and integrates with popular calendar services.",
+      "Flight Service is the API/backend which supports airline booking logic — flights listing, booking flows, maybe user/session management. Demonstrates backend design, data modeling, API endpoints, error handling, and integration readiness.",
   },
   {
     id: 3,
-    title: "Finance Dashboard",
+    title: "repairshop",
     description:
-      "An interactive dashboard for tracking personal finances, with data visualization, budget planning, and expense categorization.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "D3.js", "Firebase", "Material UI"],
+      "Computer Repair Shop Management System — full-stack, modern web app to manage repair tickets and operations.",
+    image: "/repairshop.png",
+    tags: ["Next.js", "React", "TypeScript", "Drizzle ORM", "PostgreSQL"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Tushar7436/repairshop",
     featured: true,
     longDescription:
-      "This finance dashboard provides users with a comprehensive view of their financial health. It features interactive charts and graphs powered by D3.js, automated expense categorization, budget planning tools, and financial goal tracking. Users can connect their bank accounts for automatic transaction imports, generate detailed reports, and receive personalized insights on spending habits.",
+      "Repairshop is a full-stack web app built with Next.js 15 and React 19. It features management of repair shop operations (tickets, status, assignments). Uses Drizzle ORM, next15 features, maybe auth & dashboards. Shows real-world operational flows.",
   },
   {
     id: 4,
-    title: "Content Management System",
-    description: "A custom CMS built for content creators with a focus on performance and ease of use.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Next.js", "GraphQL", "PostgreSQL", "AWS"],
+    title: "Portfolio_v2",
+    description:
+      "My personal portfolio site (v2) — showcases projects, experience, and developer profile.",
+    image: "/portfolio_v2.png",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
+    githubUrl: "https://github.com/Tushar7436/Portfolio_v2",
+    featured: true,
     longDescription:
-      "This custom content management system was designed specifically for digital content creators, bloggers, and online publications. It features a user-friendly interface, powerful content editing tools, media management, scheduled publishing, SEO optimization tools, and detailed analytics. The system is built with GraphQL for efficient data fetching and AWS for reliable hosting and content delivery.",
+      "Portfolio v2 is the second version of my personal site. Built using Next.js, React, TypeScript. It features dynamic loading of my work, polished UI, performance optimizations, responsive design, and it's intended to serve as my digital identity for job applications.",
   },
   {
     id: 5,
-    title: "Social Media Analytics Tool",
-    description: "A tool for analyzing social media performance across multiple platforms with custom reporting.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Vue.js", "Python", "Django", "Redis"],
+    title: "IEEE Student Branch VIT Bhopal",
+    description:
+      "Website / web-tool for IEEE Student Branch VIT Bhopal — events, announcements, membership info.",
+    image: "/ieee-web.png",
+    tags: ["JavaScript", "HTML", "CSS", "Frontend"],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Tushar7436/IEEE-Web",
     featured: false,
     longDescription:
-      "This social media analytics tool helps businesses and influencers track and optimize their social media presence across multiple platforms. It provides unified analytics, competitor analysis, content performance metrics, audience insights, and automated custom reports. The tool uses AI to identify trends and make content recommendations based on historical performance data.",
+      "The IEEE Student Branch site for VIT Bhopal showcases events, news, volunteer sign-ups, membership information. Good example of static + interactive content, community focused, works for both desktop & mobile.",
   },
-]
+  // … you can add more
+];
+
 
 export default function WorkPageClient() {
   return (

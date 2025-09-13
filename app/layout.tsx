@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/navigation/header"
 import Footer from "@/components/navigation/footer"
 import { Toaster } from "@/components/ui/toaster"
-import PreloaderWrapper from "@/components/preloader-wrapper"
+// import PreloaderWrapper from "@/components/preloader-wrapper"
 import ViewportFix from "@/components/viewport-fix"
 import Script from "next/script"
 import ResumeDownloadHandler from "@/components/resume-download-handler"
@@ -39,7 +39,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <ViewportFix />
           <ResumeDownloadHandler />
-          <PreloaderWrapper />
+          {/* <PreloaderWrapper /> */}
           <Header />
           <div className="overflow-x-hidden w-full">{children}</div>
           <Footer />
