@@ -10,8 +10,18 @@ import SectionHeading from "@/components/ui-elements/section-heading"
 
 // Project data with dark gradients instead of images
 const projects = [
-  {
+    {
     id: 1,
+    title: "Airline Booking Backend",
+    gradient: "from-[#18181b] via-[#27272a] to-[#3f3f46]",
+    icon: Database,
+    tags: ["Node","Express.js",,"MYSQL", "RabbitMQ","Microservices","Pub-Sub"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/Tushar7436/Airline-Backend",
+    featured: true
+  },
+  {
+    id: 2,
     title: "Repair Shop",
     gradient: "from-[#111827] via-[#1f2937] to-[#000000]",
     icon: Code,
@@ -21,23 +31,13 @@ const projects = [
     featured: true
   },
   {
-    id: 2,
+    id: 3,
     title: "Student Chapter",
     gradient: "from-[#0f172a] via-[#1e293b] to-[#334155]",
     icon: Globe,
     tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
     liveUrl: "https://ieee-c06dc.web.app",
     githubUrl: "https://github.com/Tushar7436/v9",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "Finance Dashboard",
-    gradient: "from-[#18181b] via-[#27272a] to-[#3f3f46]",
-    icon: Database,
-    tags: ["React", "D3.js", "Firebase", "Material UI"],
-    liveUrl: "#",
-    githubUrl: "#",
     featured: true
   },
   {
@@ -175,7 +175,7 @@ export default function Projects() {
                       <div className="mb-4">
                         <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                         <div className="flex flex-wrap gap-2">
-                          {project.tags.slice(0, 3).map((tag) => (
+                          {project.tags.slice(0, 5).map((tag) => (
                             <Badge key={tag} variant="outline" className="text-xs text-white border-white/30 bg-white/10">
                               {tag}
                             </Badge>

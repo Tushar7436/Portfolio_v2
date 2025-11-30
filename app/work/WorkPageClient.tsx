@@ -23,13 +23,13 @@ const projects = [
   },
   {
     id: 2,
-    title: "Flight Service",
+    title: "Flight Booking Service",
     description:
       "Backend part of the whole airline booking service, handling flight logic & APIs.",
     image: "/flight-service.png",
-    tags: ["Node.js", "Express", "REST API", "JavaScript"],
+    tags: ["Node.js", "Express.js","MYSQL", "REST API", "Microservice","RabitMQ"],
     liveUrl: "#",
-    githubUrl: "https://github.com/Tushar7436/Flight-Service",
+    githubUrl: "https://github.com/Tushar7436/Airline-Backend",
     featured: true,
     longDescription:
       "Flight Service is the API/backend which supports airline booking logic — flights listing, booking flows, maybe user/session management. Demonstrates backend design, data modeling, API endpoints, error handling, and integration readiness.",
@@ -52,9 +52,9 @@ const projects = [
     title: "Portfolio_v2",
     description:
       "My personal portfolio site (v2) — showcases projects, experience, and developer profile.",
-    image: "/portfolio_v2.png",
+    image: "/portfolio.png",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    liveUrl: "#",
+    liveUrl: "https://portfolio-v2-eosin-tau-22.vercel.app/",
     githubUrl: "https://github.com/Tushar7436/Portfolio_v2",
     featured: true,
     longDescription:
@@ -66,9 +66,9 @@ const projects = [
     description:
       "Website / web-tool for IEEE Student Branch VIT Bhopal — events, announcements, membership info.",
     image: "/ieee-web.png",
-    tags: ["JavaScript", "HTML", "CSS", "Frontend"],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Tushar7436/IEEE-Web",
+    tags: ["JavaScript", "React", "Tailwind", "Recoil"],
+    liveUrl: "https://ieee-c06dc.firebaseapp.com/",
+    githubUrl: "https://github.com/Tushar7436/v9",
     featured: false,
     longDescription:
       "The IEEE Student Branch site for VIT Bhopal showcases events, news, volunteer sign-ups, membership information. Good example of static + interactive content, community focused, works for both desktop & mobile.",
